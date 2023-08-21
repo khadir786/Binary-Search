@@ -2,7 +2,7 @@ class Banana {
     public int minEatingSpeed(int[] piles, int h) {
 
         int left = 1;
-        int right = piles.length;
+        int right = Integer.MAX_VALUE;
 
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -12,9 +12,7 @@ class Banana {
                 left = mid + 1;
             }
         }
-
         return left;
-
     }
 
     private boolean canFinish(int[] piles, int h, int k) {
@@ -26,15 +24,14 @@ class Banana {
             if (pile % k != 0)
                 hours++;
         }
-
         return hours <= h;
     }
 
     public static void main(String[] args) throws Exception {
-        BinarySearch bs = new BinarySearch();
+        Banana b = new Banana();
         int[] nums = { 30, 11, 23, 4, 20 };
 
-        int result = bs.search(nums, 5);
+        int result = b.minEatingSpeed(nums, 5);
         System.out.println((result));
     }
 }
